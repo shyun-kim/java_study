@@ -22,6 +22,17 @@ public class PrimitiveDataTypeTest {
 		char c2 = 'A';
 		int c_asc = c;
 		int c_asc2 = c2;
+		char str ='홍';
+//		char str2 = "홍"; char 데이터 타입은 반드시 '' 사용
+		
+		//상수 정의 : 프로그램 시작부터 종료까지 같은 값을 가지며, 상수명은 전체 대문자로 선언한다.
+		//final 키워드를 앞에 정의해야 함
+		//프로그램 시작: START(1), 종료 : END(0)
+		final int START = 1;
+		//int START = 2;
+		final int END = 0;
+		
+		
 		
 		//출력부
 		System.out.println("boolean : "+run);
@@ -36,7 +47,9 @@ public class PrimitiveDataTypeTest {
 		System.out.println("char : "+c2);
 		System.out.println("char ascii : "+c_asc);
 		System.out.println("char ascii2 : "+c_asc2);
-		
+		System.out.println("START : "+START);
+		System.out.println("END : "+END);
+		System.out.println(str);
 		
 	}
 
