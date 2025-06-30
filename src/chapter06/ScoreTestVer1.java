@@ -37,22 +37,38 @@ public class ScoreTestVer1 {
 		double avg = 0.0;
 		int j=0;
 		
+
 		for (int i=0; i<scoreList.length+2; i++) {
 			if (i<scoreList.length) {
 				System.out.print(subject[i]+"점수> ");
 				scoreList[i]=(int)input.nextInt();
 				total += (double)scoreList[i];
-			} else if (i == scoreList.length){
+			} else {
 				ttav[j]=total;
 				j++;
-			} else {
 				ttav[j]=avg=(total/scoreList.length);
-				
-//				i=scoreList.length;
-//				break;
+				i=scoreList.length+2;
 			}
 			
 		}
+				
+				
+//				for (int i=0; i<scoreList.length+2; i++) {
+//				if (i<scoreList.length) {
+//					System.out.print(subject[i]+"점수> ");
+//					scoreList[i]=(int)input.nextInt();
+//					total += (double)scoreList[i];
+//				} else if (i == scoreList.length){
+//					ttav[j]=total;
+//					j++;
+//				} else {
+//					ttav[j]=avg=(total/scoreList.length);
+//			}
+//		}
+		
+//				i=scoreList.length;
+//				break;
+
 		
 //		2. 데이터 출력: 학생명 국어 영어 수학
 		
