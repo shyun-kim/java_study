@@ -19,7 +19,7 @@ public class ScoreTestVer4 {
 		final int MAX_SIZE;
 		
 		
-		System.out.print("크기 입력> ");
+		System.out.print("최대 학생 수 입력> ");
 		MAX_SIZE = scan.nextInt();
 		
 		String nameList[] = new String[MAX_SIZE];
