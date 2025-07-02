@@ -7,6 +7,7 @@ import java.util.Scanner;
  * 입력값이 부족한 경우 재입력을 유도
  * 결제금액이 부족한 경우 재입력을 통해 금액을 누적으로 계산하여 저장 후 결제
  */
+
 public class LunchOrderTestVer2 {
 
 	public static void main(String[] args) {
