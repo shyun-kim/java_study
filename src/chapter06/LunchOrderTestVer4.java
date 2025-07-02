@@ -12,7 +12,7 @@ import java.util.Scanner;
  * 결제금액이 부족한 경우 재입력을 통해 금액을 누적으로 계산하여 저장 후 결제
  */
 
-public class LunchOrderTestVer3 {
+public class LunchOrderTestVer4 {
 
 	public static void main(String[] args) {
 		Scanner input = new Scanner(System.in);
@@ -31,13 +31,12 @@ public class LunchOrderTestVer3 {
 		
 		// 결제 리스트 선언 및 생성
 		// 메뉴명, 결제금액, 입금액, 잔돈
-		int paymentCount=0;
-		
-		String paymentMenuList[] = new String[MAX_SIZE];
-		int totalAmountList[] = new int[MAX_SIZE];
-		int paidAmountList[] = new int[MAX_SIZE];
-		int changeList[] = new int[MAX_SIZE];
-		
+		String paymentMenuList[][] = new String[99][];
+		int totalAmountList[] = new int[99];
+		int paidAmountList[] = new int[99];
+		int changeList[] = new int[99];
+		int orderCount = 0;
+		int paymentCount = 0;
 
 		while (menuFlag) {
 			System.out.println("*******************************************");
@@ -63,47 +62,20 @@ public class LunchOrderTestVer3 {
 					System.out.print("주문 메뉴 선택(숫자)> ");
 					if (input.hasNextInt()) {
 						int menuNum = input.nextInt();
-						boolean orderFlag2 = true;
 						if (menuNum>=1 && menuNum <=4) {
 							orderMenuList[count] = menuList[menuNum-1]; 
 							orderPriceList[count]=priceList[menuNum-1];
 							System.out.println(menuList[menuNum-1]+"가 주문 추가되었습니다.");
 							count++;
-							orderFlag2=false;
+							orderCount++;
 						} else {
 							System.out.println("준비중 입니다.");
 						}
 						
-							
-//						switch (menuNum) {
-//							case 1: 
-//								orderMenuList[count] = menuList[menuNum-1]; 
-//								orderPriceList[count]=priceList[menuNum-1]; 
-//								break;
-//							case 2: 
-//								orderMenuList[count] = menuList[menuNum-1]; 
-//								orderPriceList[count]=priceList[menuNum-1]; 
-//								break;
-//							case 3: 
-//								orderMenuList[count] = menuList[menuNum-1]; 
-//								orderPriceList[count]=priceList[menuNum-1]; 
-//								break;
-//							case 4: 
-//								orderMenuList[count] = menuList[menuNum-1]; 
-//								orderPriceList[count]=priceList[menuNum-1]; 
-//								break;
-//							default:
-//							System.out.println("준비중 입니다.");
-//							break;
-//						}
-						
-						
-						if (count == orderMenuList.length) {
-							System.out.println("주문은 메뉴 "+orderMenuList.length+"가지 까지 가능합니다. 처음 화면으로 돌아갑니다.");
-							orderFlag = false;
-						} else {
+						if (count != orderMenuList.length) {
 							System.out.print("더 주문하시겠습니까?(y/n)> ");
 							String moreOrder = input.next();
+							
 							if (moreOrder.equals("n")) {
 								orderFlag = false;
 							} else if (moreOrder.equals("y")) {
@@ -112,12 +84,16 @@ public class LunchOrderTestVer3 {
 								System.out.println("잘못된 접근입니다. 처음 화면으로 돌아갑니다.");
 								orderFlag = false;
 							}
+						} else {
+							System.out.println("주문은 메뉴 "+orderMenuList.length+"가지 까지 가능합니다. 처음 화면으로 돌아갑니다.");
+							orderFlag = false;
 						}
 					} else {
 					System.out.println("올바르지 않은 입력값 입니다. 다시 입력해 주세요");
 					input.next();
 					}
 				}
+				paymentMenuList[paymentCount] = new String [orderCount];
 				break;
 			case 2:
 				if (count !=0) {
@@ -126,7 +102,7 @@ public class LunchOrderTestVer3 {
 					for (int i =0; i <count; i++) {
 						System.out.print((i+1)+".\t ");
 						System.out.print(orderMenuList[i]+" \t");
-						System.out.print(orderPriceList[i]+" \t\n\n");
+						System.out.print(orderPriceList[i]+" \t\n");
 					}
 				} else {
 					System.out.println("주문 내역이 없습니다.");
@@ -142,24 +118,28 @@ public class LunchOrderTestVer3 {
 					for (int i=0; i<count; i++) {
 						 totalPrice += orderPriceList[i];
 					}
-					while(payFlag) {	
+					while(payFlag) {
 						System.out.println("결제금액은 "+totalPrice+"원 입니다.");
-						System.out.print("결제할 금액을 입력(숫자)>");
-						if (input.hasNextInt()) {
-							charge += input.nextInt();
-							System.out.println("총 입력 금액: "+charge);
-							if (charge >= totalPrice) {
-								change=charge-totalPrice;
-								payFlag=false;
+						System.out.print("결제할 금액을 입력(숫자)> ");
+						while(payFlag) {
+							if (input.hasNextInt()) {
+								charge += input.nextInt();
+								System.out.println("총 입력 금액: "+charge+"원");
+								if (charge >= totalPrice) {
+									change=charge-totalPrice;
+									payFlag=false;
+								} else {
+									System.out.print("요금이 부족합니다. 다시 입력해 주세요.");
+								}
 							} else {
-								System.out.print("요금이 부족합니다. 다시 입력해 주세요.");
-							}
-							
-						} else {
 							System.out.println("올바르지 않은 입력값 입니다.");
 							input.next();
+							}
 						}
-						paymentMenuList[paymentCount] = orderMenuList[0];
+						
+						for (int i=0;i<orderCount;i++) {
+							paymentMenuList[paymentCount][i]=orderMenuList[i];
+						}
 						totalAmountList[paymentCount] = totalPrice;
 						paidAmountList[paymentCount] = charge;
 						changeList[paymentCount] = change;
@@ -181,22 +161,31 @@ public class LunchOrderTestVer3 {
 						
 						count=0;
 						paymentCount++;
-					}
-				} else {
+						}
+				}else {
 					System.out.println("주문 내역이 없습니다.");
 				}
 				break;
 			case 4:
-				for(int i=0; i<paymentCount; i++) {
-					System.out.println("주문메뉴\t\t결제금액\t지불금액\t잔돈");
-					System.out.print(paymentMenuList[i]+"및"+count+"개 \t");
-					System.out.print(totalAmountList[i]+"원 \t");
-					System.out.print(paidAmountList[i]+"원 \t");
-					System.out.println(+changeList[i]+"원 \t");
+				if (paymentMenuList[0]!=null) {
+					for(int i=0; i<paymentCount; i++) {
+						System.out.println("<"+(i+1)+">");
+						System.out.println(">주문메뉴");
+						for (int j=0; j<paymentMenuList[i].length; j++) {
+							System.out.println(paymentMenuList[i][j]);
+						}
+						System.out.println(">결제금액: "+totalAmountList[i]+"원");
+						System.out.println(">지불금액: "+paidAmountList[i]+"원");
+						System.out.println(">잔돈: "+changeList[i]+"원");
+					}
+					orderCount=0;
+				} else {
+					System.out.println("결제 내역이 없습니다.");
 				}
 				break;
 			case 9:
 				System.out.println("프로그램을 종료합니다.");
+				paymentCount=0;
 				System.exit(0);
 			default: 
 				System.out.println("메뉴 준비중");
