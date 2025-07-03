@@ -15,10 +15,18 @@ public class Student {
 	}
 	
 	//Method
-//	public int getTot() {
-//		return kor[]+eng[]+math[];
-//	}
-//	public int getAvg() {
-//		return (kor[]+eng[]+math[])/3;
-//	}
+	public void getTot() {
+		int i=0;
+		for (i=0; i<3; i++) {
+			tot[i]=kor[i]+eng[i]+math[i];
+		}
+	}
+				
+	public void getAvg() {
+		int i=0;
+		for (i=0;i<3;i++) {
+			avg[i]=(kor[i]+eng[i]+math[i])/3;
+		}
+		
+	}
 }

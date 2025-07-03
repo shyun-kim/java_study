@@ -23,7 +23,6 @@ public class ScoreMgmSystem {
 		int i=0;
 
 		while(stuInput) {
-			
 				System.out.print("학생명> ");
 				student.name[i]=input.next();
 				System.out.print("국어> ");
@@ -33,12 +32,12 @@ public class ScoreMgmSystem {
 				System.out.print("수학> ");
 				student.math[i]=input.nextInt();
 				System.out.println(">> 등록완료");
+				i++;
 				if (i<3) {
 					while (stuInput) {
 						System.out.print("계속 입력하시겠습니까?(y/n)> ");
 						String check = input.next();
 						if(check.equals("y")) {
-							i++;
 							break;
 						} else if (check.equals("n")) {
 							stuInput = false;
@@ -47,11 +46,10 @@ public class ScoreMgmSystem {
 							System.out.println("잘못된 입력입니다.");
 						}
 					}
-					
 				}else {
-					break;
+					System.out.println("현재 3명까지 입력 가능합니다");
+					stuInput = false;
 				}
-
 		}
 	}
 	public void show() {
@@ -63,8 +61,10 @@ public class ScoreMgmSystem {
 			System.out.print(student.kor[i]+"\t");
 			System.out.print(student.eng[i]+"\t");
 			System.out.print(student.math[i]+"\t");
-			System.out.print((student.kor[i]+student.eng[i]+student.math[i])+"\t");
-			System.out.print((student.kor[i]+student.eng[i]+student.math[i])/3+"\n");
+			student.getTot();
+			System.out.print(student.tot[i]+"\t");
+			student.getAvg();
+			System.out.print(student.avg[i]+"\n");
 			i++;
 		}
 		
