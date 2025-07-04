@@ -1,9 +1,11 @@
-package chapter07;
+package practice;
 
-public class ScoreMgmSystemTest {
+import chapter07.ScoreMgmSystem;
+
+public class ScoreMgmSystemTestPractice {
 
 	public static void main(String[] args) {
-		ScoreMgmSystem tjsms = new ScoreMgmSystem();
+		ScoreMgmSystemPractice tjsms = new ScoreMgmSystemPractice();
 		
 	
 		//System.out.println("학생 정보/성적 정보 입력");
