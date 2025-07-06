@@ -1,15 +1,16 @@
 package practice;
 
+import java.util.Scanner;
+
 public class LaptimeMain {
 
 	public static void main(String[] args) {
-		Laptime lapt= new Laptime();
+		Laptime lapt= new Laptime();	
+		lapt.main();
+		System.out.println("==프로그램 종료==");
 		
-		lapt.driver();
-		lapt.driverName();
-		for(int i=0;i<lapt.driver.length;i++) {
-			System.out.println(lapt.driver[i]);
-		}
+		
+		
 	}
 
 }
