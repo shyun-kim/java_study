@@ -55,45 +55,100 @@ public class LunchOrderTestVer4 {
 			switch (selectednum) {
 			case 1:
 				boolean orderFlag= true;
-				while(orderFlag) {
-					System.out.println("===음식 메뉴===");
-					System.out.println("1.햄버거(🍔):100\t 2.피자(🍕):200");
-					System.out.println("3.라멘(🍜):300\t 4.샐러드(🥗):400");
-					System.out.print("주문 메뉴 선택(숫자)> ");
-					if (input.hasNextInt()) {
-						int menuNum = input.nextInt();
-						if (menuNum>=1 && menuNum <=4) {
-							orderMenuList[count] = menuList[menuNum-1]; 
-							orderPriceList[count]=priceList[menuNum-1];
-							System.out.println(menuList[menuNum-1]+"가 주문 추가되었습니다.");
-							count++;
-							orderCount++;
-						} else {
-							System.out.println("준비중 입니다.");
-						}
-						
-						if (count != orderMenuList.length) {
-							System.out.print("더 주문하시겠습니까?(y/n)> ");
-							String moreOrder = input.next();
-							
-							if (moreOrder.equals("n")) {
-								orderFlag = false;
-							} else if (moreOrder.equals("y")) {
-								
+				if (count == 0) {
+					while(orderFlag) {
+						System.out.println("===음식 메뉴===");
+						System.out.println("1.햄버거(🍔):100\t 2.피자(🍕):200");
+						System.out.println("3.라멘(🍜):300\t 4.샐러드(🥗):400");
+						System.out.print("주문 메뉴 선택(숫자)> ");
+						if (input.hasNextInt()) {
+							int menuNum = input.nextInt();
+							if (menuNum>=1 && menuNum <=4) {
+								orderMenuList[count] = menuList[menuNum-1]; 
+								orderPriceList[count]=priceList[menuNum-1];
+								System.out.println(menuList[menuNum-1]+"가 주문 추가되었습니다.");
+								count++;
 							} else {
-								System.out.println("잘못된 접근입니다. 처음 화면으로 돌아갑니다.");
+								System.out.println("준비중 입니다.");
+							}
+							
+							if (count != orderMenuList.length) {
+								while(orderFlag) {
+									System.out.print("더 주문하시겠습니까?(y/n)> ");
+									String moreOrder = input.next();
+									if (moreOrder.equals("n")) {
+										orderCount++;
+										orderFlag = false;
+									} else if (moreOrder.equals("y")) {
+										break;
+									} else {
+										System.out.println("잘못된 접근입니다.");
+									}
+								}
+							} else {
+								System.out.println("주문은 메뉴 "+orderMenuList.length+"가지 까지 가능합니다. 처음 화면으로 돌아갑니다.");
+								orderCount++;
 								orderFlag = false;
 							}
 						} else {
-							System.out.println("주문은 메뉴 "+orderMenuList.length+"가지 까지 가능합니다. 처음 화면으로 돌아갑니다.");
-							orderFlag = false;
+						System.out.println("올바르지 않은 입력값 입니다. 다시 입력해 주세요");
+						input.next();
 						}
-					} else {
-					System.out.println("올바르지 않은 입력값 입니다. 다시 입력해 주세요");
-					input.next();
+						
 					}
+				} else {
+					while(orderFlag) {
+						System.out.println("이미 선택된 메뉴가 있습니다. 메뉴를 추가하시겠습니까?(y/n)> ");
+						String addOrder = input.next();
+						if (addOrder.equals("n")) {
+							orderFlag = false;
+						} else if (addOrder.equals("y")) {
+							System.out.println("===음식 메뉴===");
+							System.out.println("1.햄버거(🍔):100\t 2.피자(🍕):200");
+							System.out.println("3.라멘(🍜):300\t 4.샐러드(🥗):400");
+							System.out.print("주문 메뉴 선택(숫자)> ");
+							if (input.hasNextInt()) {
+								int menuNum = input.nextInt();
+								if (menuNum>=1 && menuNum <=4) {
+									orderMenuList[count] = menuList[menuNum-1]; 
+									orderPriceList[count]=priceList[menuNum-1];
+									System.out.println(menuList[menuNum-1]+"가 주문 추가되었습니다.");
+									count++;
+								} else {
+									System.out.println("준비중 입니다.");
+								}
+								
+								if (count != orderMenuList.length) {
+									while(orderFlag) {
+										System.out.print("더 주문하시겠습니까?(y/n)> ");
+										String moreOrder = input.next();
+										if (moreOrder.equals("n")) {
+											orderFlag = false;
+										} else if (moreOrder.equals("y")) {
+											break;
+										} else {
+											System.out.println("잘못된 접근입니다.");
+										}
+									}
+								} else {
+									System.out.println("주문은 메뉴 "+orderMenuList.length+"가지 까지 가능합니다. 처음 화면으로 돌아갑니다.");
+									orderFlag = false;
+								}
+							} else {
+							System.out.println("올바르지 않은 입력값 입니다. 다시 입력해 주세요");
+							input.next();
+							}
+
+						} else {
+							System.out.println("잘못된 접근입니다.");
+						}
+					}
+					
+					
 				}
-				paymentMenuList[paymentCount] = new String [orderCount];
+				
+				
+				paymentMenuList[paymentCount] = new String [count];
 				break;
 			case 2:
 				if (count !=0) {
@@ -137,7 +192,7 @@ public class LunchOrderTestVer4 {
 							}
 						}
 						
-						for (int i=0;i<orderCount;i++) {
+						for (int i=0;i<count;i++) {
 							paymentMenuList[paymentCount][i]=orderMenuList[i];
 						}
 						totalAmountList[paymentCount] = totalPrice;
@@ -167,21 +222,25 @@ public class LunchOrderTestVer4 {
 				}
 				break;
 			case 4:
-				if (paymentMenuList[0]!=null) {
-					for(int i=0; i<paymentCount; i++) {
-						System.out.println("<"+(i+1)+">");
-						System.out.println(">주문메뉴");
-						for (int j=0; j<paymentMenuList[i].length; j++) {
-							System.out.println(paymentMenuList[i][j]);
-						}
-						System.out.println(">결제금액: "+totalAmountList[i]+"원");
-						System.out.println(">지불금액: "+paidAmountList[i]+"원");
-						System.out.println(">잔돈: "+changeList[i]+"원");
-					}
-					orderCount=0;
+				if (paymentCount != orderCount) {
+					System.out.println("아직 결제가 완료되지 않은 항목이 있습니다.");
 				} else {
-					System.out.println("결제 내역이 없습니다.");
+					if (paymentMenuList[0]!=null) {
+						for(int i=0; i<paymentCount; i++) {
+							System.out.println("<"+(i+1)+">");
+							System.out.println(">주문메뉴");
+							for (int j=0; j<paymentMenuList[i].length; j++) {
+								System.out.println(paymentMenuList[i][j]);
+							}
+							System.out.println(">결제금액: "+totalAmountList[i]+"원");
+							System.out.println(">지불금액: "+paidAmountList[i]+"원");
+							System.out.println(">잔돈: "+changeList[i]+"원");
+						}
+					} else {
+						System.out.println("결제 내역이 없습니다.");
+					}
 				}
+				
 				break;
 			case 9:
 				System.out.println("프로그램을 종료합니다.");
