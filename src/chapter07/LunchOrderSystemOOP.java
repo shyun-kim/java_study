@@ -138,16 +138,7 @@ public class LunchOrderSystemOOP {
 		}
 	}
 	
-	public int searchOrderItemIdx(int lunchMenu) {
-		int idx = -1;
-		for(int i=0;i<orderCount; i++) {
-			LunchOrderItem orderItem = orderItemList[i];
-			if (orderItem.no == lunchMenu) {
-				idx=i;
-			}
-		}
-		return idx;
-	}
+	
 	
 	public void orderItemListInit() {
 //		orderItemList = new LunchOrderItem[4];
@@ -160,6 +151,7 @@ public class LunchOrderSystemOOP {
 		}
 		orderCount = 0;
 	}
+	
 	
 	
 	//주문: order()
@@ -189,6 +181,19 @@ public class LunchOrderSystemOOP {
 		System.out.println("==주문완료==");
 		showMainMenu();
 	}
+	
+	public int searchOrderItemIdx(int lunchMenu) {
+		int idx = -1;
+		for(int i=0;i<orderCount; i++) {
+			LunchOrderItem orderItem = orderItemList[i];
+			if (orderItem.no == lunchMenu) {
+				idx=i;
+			}
+		}
+		return idx;
+	}
+	
+	
 	
 	//주문 리스트: orderList()
 	public void orderList() {

@@ -6,7 +6,7 @@ public class DrinkTest {
 		DrinkOrderSystem dordersys = new DrinkOrderSystem();
 		
 		dordersys.mainMenu();
-		
+		System.out.println("==종료==");
 
 	}
 
