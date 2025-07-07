@@ -13,13 +13,6 @@ public class DrinkOrder {
 	}
 	
 	//Method
-	public void selMenuCheck(int menu) {
-		for(int i =0;i<selMenu.length;i++) {
-			if (dmenu.menuName[menu] == selMenu[i]) {
-				qty++;
-				amount=dmenu.price[menu]*qty;
-			}
-		}
-	}
+	
 	
 }
