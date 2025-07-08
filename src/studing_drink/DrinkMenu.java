@@ -1,4 +1,4 @@
-package studing;
+package studing_drink;
 
 public class DrinkMenu {
 	int no;
