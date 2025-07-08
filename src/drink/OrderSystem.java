@@ -2,6 +2,8 @@ package drink;
 
 import java.util.Scanner;
 
+import commons.Menu;
+
 public class OrderSystem {
 	//Field
 	Scanner scan = new Scanner(System.in);
@@ -15,8 +17,8 @@ public class OrderSystem {
 	
 	//Constructor
 	public OrderSystem() { //여기서 this(int)를 주고 인트 값 생성자에 init 안주면 실행 안되나?
-//		this("mega");
-		this(1);
+		this("mega");
+//		this(1);
 //		init();
 	};
 	public OrderSystem(String title) {
