@@ -41,6 +41,7 @@ public class DrinkOrderSystem {
 		}
 	}
 	
+	
 	public void orderCheck(int menuSel) {
 		if(menuSel >= 1&&menuSel<=4) {
 			order(menuSel);
