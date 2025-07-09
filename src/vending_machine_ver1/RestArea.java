@@ -12,7 +12,7 @@ public class RestArea {
 		this.name = name;
 		user = new User("정국");
 		welcome();
-		machine = new VendingMachine("맛도리");
+		machine = new VendingMachine(user);
 	}
 	
 	public void welcome() {
