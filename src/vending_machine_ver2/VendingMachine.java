@@ -14,7 +14,7 @@ public class VendingMachine {
 	int price[] = {300,400,300,200};
 	Menu menuList[];
 	Menu canOrderList[];
-	
+
 	//Constructor
 	
 	
@@ -117,13 +117,14 @@ public class VendingMachine {
 	
 	public void makeOrder(int menuSel) {
 		//토탈코인에서 메뉴리스트[메뉴셀-1].프라이스 빼고 나머지 보여주기 
-		int minPrice=menuList[4].price; //메뉴중 가장 저렴한 초코유우 가격
-		System.out.print("===주문 항목===");
+		int minPrice=menuList[3].price; //메뉴중 가장 저렴한 초코유우 가격
+		System.out.println("===주문 항목===");
 		System.out.print(menuList[(menuSel-1)].no+". \t");
 		System.out.print(menuList[(menuSel-1)].name+"\t");
 		System.out.println(menuList[(menuSel-1)].price);
 		change=totalCoin-menuList[(menuSel-1)].price;
 		System.out.println("잔돈은 "+change+"원 입니다.");
+		totalCoin =change;
 		
 		if (change>=minPrice) {
 			askOrder(1.1);

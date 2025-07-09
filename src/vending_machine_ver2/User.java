@@ -47,7 +47,7 @@ public class User {
 	
 	public int menuSel() {
 		int menuNum=-1;
-		System.out.println("주문할 항목 번호를 입력해 주세요> ");
+		System.out.print("주문할 항목 번호를 입력해 주세요> ");
 		int sel;
 		if (scan.hasNextInt()) {
 			sel=scan.nextInt();
