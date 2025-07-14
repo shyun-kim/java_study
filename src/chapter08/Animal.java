@@ -1,8 +1,8 @@
 package chapter08;
 
 public class Animal extends Client_Abstract {
-//	String name;
-//	int age;
+	String name;
+	int age;
 	Person owner;
 
 	public Animal() {
@@ -26,13 +26,19 @@ public class Animal extends Client_Abstract {
 	public void register() {
 		System.out.println(owner.name+" 접수를 한다.");	
 	}
+	@Override
+	public void payment() {
+		System.out.println("접수한다.");	
+	}
 	
 	@Override
 	//고객 정보 출력시 owner 정보 포함 >> Client 클래스에는 owner 정보가 없기 때문에 Animal(자식) 쪽에서 메소드 작성 필요
 	public void printInfo() { //부모가 가진 메소드를 똑같은 모습으로 가져옴 - 오버라이딩(Overriding)
 		System.out.print("고객(Animal) 정보=> ");
+		System.out.print(name+",");
+		System.out.print(age+",");
 		System.out.print(owner.name+",");
-		System.out.print(owner.age+"\ntih");
+		System.out.print(owner.age+"\n");
 	}
 	
 }

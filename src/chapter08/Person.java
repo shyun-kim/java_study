@@ -4,7 +4,7 @@ public class Person extends Client_Abstract {
 	String name;
 	String address;
 	String phone;
-//	ing age;
+	int age;
 	
 	public Person() {
 		this("이순신","강남구","010-1234-5678", 20);
@@ -24,19 +24,15 @@ public class Person extends Client_Abstract {
 	}
 	
 	public void personRegister() {
-		System.out.println("");
-		System.out.println("");
-		System.out.println("");
+		System.out.println("인간 접수한다.");
 	}
 	
 	@Override
 	public void register() {
-		System.out.println(name+" 접수를 한다.");	
+		System.out.println(name+"고객이 접수를 한다.");	
 	}
 	@Override
-	public void payment() {
-		System.out.println("접수한다.");	
-	}
+	public void payment() {}
 	
 	@Override
 	public void printInfo() { //부모가 가진 메소드를 똑같은 모습으로 가져옴 - 오버라이딩(Overriding)

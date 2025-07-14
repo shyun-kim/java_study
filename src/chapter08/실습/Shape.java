@@ -1,7 +1,12 @@
 package chapter08.실습;
 
-abstract public class Shape {
+public class Shape {
+	String color; //abstract 클래스는 객체 생성 안됨
 	
-	abstract public void draw();
+	protected Shape(String color) {//protected 자식만 사용 할 수 있음
+		this.color=color;
+	} 
+	
+	
 
 }

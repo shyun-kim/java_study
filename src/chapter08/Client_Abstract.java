@@ -17,9 +17,9 @@ abstract public class Client_Abstract {
 	//오버라이드 되는 메소드는 body 없이 이름만 선언됨 >> 추상(abstract)메소드
 	//추상메소드를 사용하기 위해서는 메소드 앞과, 클래스 선언 앞에 abstract을 붙여줘야함. 
 	//Abstract Method를 하나라도 가지고 있으면 abstract class라고 부름 
-	@Override
-	
 	abstract public void printInfo(); 
+	abstract public void register();
+	abstract public void payment();
 	
 
 }
