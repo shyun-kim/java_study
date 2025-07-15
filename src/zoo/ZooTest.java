@@ -34,6 +34,7 @@ public class ZooTest {
 		Lion lion2 = (Lion)list2.get(0);
 		System.out.println("lion2.name > "+lion2.name);
 		
+		//아래와 같은 방법으로 Interface에 Method를 추가하면 위와 같이 강제 형변환을 하지 않아도 됨
 		System.out.println(list2.get(0).getName());
 		System.out.println(list2.get(0).getAge());
 		System.out.println(list2.get(1).getName());
