@@ -30,14 +30,12 @@ public class ObjectTypeCastingTest {
 		 
 		 //상속받은 인터페이스를 통한 객체 생성
 		 ShapeInterface ri = new Rectangle("무라사키",1,2);
-		 ri.draw();
-		 System.out.println(ri.getArea());
-		 System.out.println();
-		 
 		 ShapeInterface ti = new Triangle("올리브");
+//		 추상메소드	    --다형성 구현--		상속받아 오버라이딩
+		 
+		 ri.draw();
 		 ti.draw();
-		 System.out.println(ti.getArea());
-		 System.out.println();
+
 		 
 		 cs.draw();
 //		 cs2.draw();
