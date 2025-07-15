@@ -1,4 +1,4 @@
-package chapter08.실습;
+package chapter08;
 
 public class InharitanceTest2 {
 	public static void main (String [] args) {

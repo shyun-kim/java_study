@@ -1,4 +1,4 @@
-package chapter08.실습;
+package chapter08;
 
 public class Circle extends Shape implements ShapeInterface { //클래스는 단일 상속만 가능하기 때문에 추상메소드를 위한 interface 사용
 //	String color;

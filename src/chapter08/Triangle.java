@@ -1,4 +1,4 @@
-package chapter08.실습;
+package chapter08;
 
 public class Triangle extends Shape implements ShapeInterface{
 //	String color;

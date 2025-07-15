@@ -1,4 +1,4 @@
-package chapter08.실습;
+package chapter08;
 
 public class Shape {
 	String color; //abstract 클래스는 객체 생성 안됨
