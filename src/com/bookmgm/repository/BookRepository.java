@@ -8,6 +8,7 @@ public interface BookRepository {
 	boolean insert(Book book);
 	List<Book> selectAll();
 	void remove(String id);
+	void remove(Book book);
 	void update(Book book);
 	Book select(String id);
 	int getCount();

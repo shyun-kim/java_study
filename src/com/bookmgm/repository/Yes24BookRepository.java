@@ -6,12 +6,12 @@ import java.util.List;
 
 import com.bookmgm.model.Book;
 
-public class InMemoryBookRepository implements BookRepository{
+public class Yes24BookRepository implements BookRepository{
 	
 	List<Book> library = new ArrayList<Book>();
 	
-	public InMemoryBookRepository() {
-		System.out.println("=교육센터=");
+	public Yes24BookRepository() {
+		System.out.println("=Yes24=");
 	}
 	
 	@Override

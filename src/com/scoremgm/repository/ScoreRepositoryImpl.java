@@ -33,6 +33,8 @@ public class ScoreRepositoryImpl implements ScoreRepository{
 				break;
 			}
 		}
+		
+		storage.set(idx, member);
 	}
 	
 	
