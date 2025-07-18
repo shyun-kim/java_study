@@ -50,7 +50,7 @@ public class ScoreServiceImpl implements ScoreService{
 	 */
 	//오버로딩
 	public List createMemberInfo(Member member) {
-		String[] labels = {"학생명","전공","국어","영어","수학"};
+		String[] labels = {"국어","영어","수학"};
 		List memberInfo = new ArrayList();
 		
 		System.out.println("학번: "+member.getNo()+", 학생명: "+member.getName());
@@ -108,7 +108,7 @@ public class ScoreServiceImpl implements ScoreService{
 		if(getCount() != 0) {
 			List<Member> list = repository.findAll();
 			System.out.println("-------------------------------------------------");
-			System.out.println("학번\t\t\t이름\t\t전공\t국어\t영어\t수학");
+			System.out.println("학번\t\t이름\t전공\t국어\t영어\t수학");
 			System.out.println("-------------------------------------------------");
 			list.forEach((member) -> {
 				System.out.print(member.getNo() +" \t");
@@ -140,7 +140,7 @@ public class ScoreServiceImpl implements ScoreService{
 				
 			
 			System.out.println("-------------------------------------------------");
-			System.out.println("학번\t\t\t이름\t\t전공\t국어\t영어\t수학");
+			System.out.println("학번\t\t이름\t전공\t국어\t영어\t수학");
 			System.out.println("-------------------------------------------------");
 			System.out.print(member.getNo() +" \t");
 			System.out.print(member.getName() +" \t");
@@ -165,7 +165,7 @@ public class ScoreServiceImpl implements ScoreService{
 			Member member = repository.find(no);	//학생 old 정보
 			
 			if(member != null) {
-				//수정할 학생 정보 입력 (학생제외)
+				//수정할 학생 정보 입력 (학번 제외)
 				List memberInfo = createMemberInfo(member);
 				member.setKor((int)memberInfo.get(0));
 				member.setEng((int)memberInfo.get(1));
@@ -176,7 +176,7 @@ public class ScoreServiceImpl implements ScoreService{
 				
 				System.out.println("=> 수정결과");
 				System.out.println("-------------------------------------------------");
-				System.out.println("학번\t\t\t이름\t\t전공\t국어\t영어\t수학");
+				System.out.println("학번\t\t이름\t전공\t국어\t영어\t수학");
 				System.out.println("-------------------------------------------------");
 				System.out.print(member.getNo() +" \t");
 				System.out.print(member.getName() +" \t");
@@ -185,10 +185,10 @@ public class ScoreServiceImpl implements ScoreService{
 				System.out.print(member.getEng() +" \t");
 				System.out.print(member.getMath() +" \n");
 				System.out.println("-------------------------------------------------");
+			} else {
+				System.out.println("=> 등록된 학생이 없습니다. ");
 			}
-		} else {
-			System.out.println("=> 등록된 학생이 없습니다. ");
-		}
+		} 
 		sms.showMenu();
 		sms.selectMenu();		
 	}
