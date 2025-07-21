@@ -56,21 +56,24 @@ class ClientHandler extends Thread{
 	
 	public void run() {
 		try {
-			while(true) {
+			boolean flag = true;
+			while(flag) {
 				String receivedMsg = input.readUTF();
-//				output.writeUTF("[서버]"+receivedMsg); //현재 접속한 클라이언트에게 전송
-				Server.list.forEach(ch -> {
-					try {
-						ch.output.writeUTF(receivedMsg);						
-					} catch(Exception e) {
-						
-					}
-				});
+				if (receivedMsg.equals("exit")){
+					flag = false;
+				} else {
+//					output.writeUTF("[서버]"+receivedMsg); //현재 접속한 클라이언트에게 전송
+					Server.list.forEach(ch -> {
+						try {
+							ch.output.writeUTF(receivedMsg);						
+						} catch(Exception e) {
+						}
+					});
+				}
 			}
-			
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
+				}catch(Exception e) {
+					e.printStackTrace();
+				}
 	}
 }
+
