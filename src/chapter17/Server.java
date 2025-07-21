@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 /**
  * 멀티 채팅 서버 구현
@@ -12,6 +13,7 @@ import java.net.Socket;
 public class Server {
 	
 	public final static int PORT = 9000;
+	public static ArrayList<ClientHandler> list = new ArrayList<ClientHandler>();
 
 	public static void main(String[] args) {
 		try{
@@ -23,7 +25,9 @@ public class Server {
 				Socket s = server.accept();
 				System.out.println("클라이언트 접속");
 				// 클라이언트 별로 접속하고 별도 종료 진행
-				new ClientHandler(s);
+				ClientHandler ch = new ClientHandler(s);
+				list.add(ch);
+				ch.start();
 			}
 		} catch(Exception e) {
 			
@@ -52,9 +56,18 @@ class ClientHandler extends Thread{
 	
 	public void run() {
 		try {
+			while(true) {
+				String receivedMsg = input.readUTF();
+//				output.writeUTF("[서버]"+receivedMsg); //현재 접속한 클라이언트에게 전송
+				Server.list.forEach(ch -> {
+					try {
+						ch.output.writeUTF(receivedMsg);						
+					} catch(Exception e) {
+						
+					}
+				});
+			}
 			
-			String receivedMsg = input.readUTF();
-			output.writeUTF("[서버]"+receivedMsg);
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
