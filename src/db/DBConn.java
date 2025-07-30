@@ -33,7 +33,7 @@ public class DBConn {
 		public void getPreparedStatement(String sql) {
 			//2단계: PreparedStatement 객체 생성
 			try {
-				stmt = connection.prepareStatement(sql);
+				pstmt = connection.prepareStatement(sql);
 				System.out.println("----->> 2단계 성공");
 				
 			} catch (Exception e) {e.printStackTrace();}

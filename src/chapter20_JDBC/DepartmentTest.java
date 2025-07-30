@@ -9,7 +9,7 @@ public class DepartmentTest {
 //		dao.getStatement();
 //		List<DepartmentVo> list = dao.getList();
 		DepartmentVo insertVo = new DepartmentVo();
-		insertVo.setDeptId("XYZ");
+		insertVo.setDeptId("DEF");
 		insertVo.setDeptName("테스트");
 		insertVo.setUnitId("A");
 		

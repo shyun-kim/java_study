@@ -58,20 +58,32 @@ public class DepartmentDao extends DBConn{
 		public boolean insert(DepartmentVo department) {
 			boolean result = false;
 			try {
-				getStatement();
-				if(stmt != null) {
-					StringBuilder sb = new StringBuilder();
-					sb.append("insert into department(dept_id, dept_name, unit_id, start_date)");
-					sb.append(" values('");
-					sb.append(department.getDeptId()+ "','");
-					sb.append(department.getDeptName()+ "','");
-					sb.append(department.getUnitId()+ "',");
-					sb.append(" curdate() )");
-					
-					int resultRow = stmt.executeUpdate(sb.toString());
-					if(resultRow != 0) {result = true;}
-					System.out.println("rows --> "+resultRow);
-				}
+				String sql = """
+							insert into department(dept_id, dept_name, unit_id, start_date)
+							values(?,?,?,curdate());
+						""";
+				getPreparedStatement(sql);
+				pstmt.setString(1, department.getDeptId()); //1번부터 시작, 0번 X
+				pstmt.setString(2, department.getDeptName());
+				pstmt.setString(3, department.getUnitId());
+				
+				int rows = pstmt.executeUpdate();
+				if (rows == 1) result = true;
+				
+//				getStatement();
+//				if(stmt != null) {
+//					StringBuilder sb = new StringBuilder();
+//					sb.append("insert into department(dept_id, dept_name, unit_id, start_date)");
+//					sb.append(" values('");
+//					sb.append(department.getDeptId()+ "','");
+//					sb.append(department.getDeptName()+ "','");
+//					sb.append(department.getUnitId()+ "',");
+//					sb.append(" curdate() )");
+//					
+//					int resultRow = stmt.executeUpdate(sb.toString());
+//					if(resultRow != 0) {result = true;}
+//					System.out.println("rows --> "+resultRow);
+//				}
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
