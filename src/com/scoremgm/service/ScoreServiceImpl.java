@@ -157,71 +157,73 @@ public class ScoreServiceImpl implements ScoreService{
 		sms.showMenu();
 		sms.selectMenu();	
 	}
-//	
-//	@Override
-//	public void update() {
-//		if(getCount() != 0) {
-//			System.out.print("학번(뒤 4자리)> ");
-//			String no = scan.next();			
-//			MemberVo member = repository.find(no);	//학생 old 정보
-//			
-//			if(member != null) {
-//				//수정할 학생 정보 입력 (학번 제외)
-//				List memberInfo = createMemberInfo(member);
-//				member.setKor((int)memberInfo.get(0));
-//				member.setEng((int)memberInfo.get(1));
-//				member.setMath((int)memberInfo.get(2));
-//				
-//				//Storage에 member업데이트
-//				repository.update(member);
-//				
-//				System.out.println("=> 수정결과");
-//				System.out.println("-------------------------------------------------");
-//				System.out.println("학번\t\t이름\t전공\t국어\t영어\t수학");
-//				System.out.println("-------------------------------------------------");
-//				System.out.print(member.getNo() +" \t");
-//				System.out.print(member.getName() +" \t");
-//				System.out.print(member.getDepartment() +" \t");
-//				System.out.print(member.getKor() +" \t");
-//				System.out.print(member.getEng() +" \t");
-//				System.out.print(member.getMath() +" \n");
-//				System.out.println("-------------------------------------------------");
-//			} else {
-//				System.out.println("=> 등록된 학생이 없습니다. ");
-//			}
-//		} 
-//		sms.showMenu();
-//		sms.selectMenu();		
-//	}
-//	
-//	
-//	/**
-//	 * 등록된 학생 삭제
-//	 */
-//	@Override
-//	public void delete() {
-//		if(getCount() != 0) {
-//			System.out.print("학번(뒤 4자리)> ");
-//			String no = scan.next();			
-//			MemberVo member = repository.find(no);	//학생 old 정보
-//			
-//			if(member != null) {
-//				//정말로 삭제 진행 여부 확인
-//				System.out.println("정말로 삭제 하시겠습니까?(y:삭제/이외 키:삭제 취소)");
-//				if(scan.next().equals("y")) {
-//					repository.remove(no);
-//					System.out.println("==삭제완료==");
-//				}
-//			} else {
-//			System.out.println("=> 등록된 학생이 없습니다. ");
-//			}
-//		sms.showMenu();
-//		sms.selectMenu();
-//		}
-//	}
-//	
-//	
-//	
+	
+	@Override
+	public void update() {
+		if(getCount() != 0) {
+			System.out.print("학번> ");
+			String no = scan.next();			
+			MemberVo member = repository.find(no);	//학생 old 정보
+			
+			if(member != null) {
+				//수정할 학생 정보 입력 (학번 제외)
+				List memberInfo = createMemberInfo(member);
+				member.setKor((int)memberInfo.get(0));
+				member.setEng((int)memberInfo.get(1));
+				member.setMath((int)memberInfo.get(2));
+				
+				//Storage에 member업데이트
+				repository.update(member);
+				
+				System.out.println("=> 업데이트 성공");
+				System.out.println("-------------------------------------------------");
+				System.out.println("학번\t\t이름\t전공\t국어\t영어\t수학");
+				System.out.println("-------------------------------------------------");
+				System.out.print(member.getMid() +" \t");
+				System.out.print(member.getName() +" \t");
+				System.out.print(member.getDepartment() +" \t");
+				System.out.print(member.getKor() +" \t");
+				System.out.print(member.getEng() +" \t");
+				System.out.print(member.getMath() +" \n");
+				System.out.println("-------------------------------------------------");
+			} else {
+				System.out.println("=> 등록된 학생이 없습니다. ");
+			}
+		} 
+		sms.showMenu();
+		sms.selectMenu();		
+	}
+	
+	
+	/**
+	 * 등록된 학생 삭제
+	 */
+	@Override
+	public void delete() {
+		if(getCount() != 0) {
+			System.out.print("학번> ");
+			String mid = scan.next();			
+			MemberVo member = repository.find(mid);	//학생 old 정보
+			
+			if(member != null) {
+				//정말로 삭제 진행 여부 확인
+				System.out.println("정말로 삭제 하시겠습니까?(y:삭제/이외 키:삭제 취소)");
+				if(scan.next().equals("y")) {
+					repository.remove(mid);
+					System.out.println("==삭제완료==");
+				}
+			} else {
+			System.out.println("=> 검색하신 학생이 등록되어있지 않습니다. ");
+			}
+		sms.showMenu();
+		sms.selectMenu();
+		} else {
+			System.out.println("=> 등록된 학생이 없습니다. ");
+			}
+	}
+	
+	
+	
 	@Override
 	public void exit() {
 		System.out.println("=> 프로그램 종료!!");

@@ -9,4 +9,5 @@ public interface BookService {
 	void delete();
 	void exit();
 	int getCount();
+	void changeRepository();
 }
