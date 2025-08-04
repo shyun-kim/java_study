@@ -5,8 +5,8 @@ public class BookVo {
 	private String title;
 	private int price;
 	private String author;
-	private String subTitle;
-	private String lable;
+	private String subtitle;
+	private String genre;
 	private String date;
 	
 	
@@ -34,17 +34,17 @@ public class BookVo {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getSubTitle() {
-		return subTitle;
+	public String getSubtitle() {
+		return subtitle;
 	}
-	public void setSubTitle(String subTitle) {
-		this.subTitle = subTitle;
+	public void setSubtitle(String subtitle) {
+		this.subtitle = subtitle;
 	}
-	public String getLable() {
-		return lable;
+	public String getGenre() {
+		return genre;
 	}
-	public void setLable(String lable) {
-		this.lable = lable;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 	public String getDate() {
 		return date;

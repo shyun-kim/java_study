@@ -2,7 +2,7 @@ package chapter21_miniproject.model;
 
 public class MemberVo {
 	private String name;
-	private int phone;
+	private String phone;
 	private String address;
 	
 	
@@ -18,10 +18,10 @@ public class MemberVo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 

@@ -1,6 +1,7 @@
 package chapter21_miniproject.service;
 
 public interface ProjectServiceInterface {
+	public void showList();
 	public void checkCustomer();
 	public void checkShoppingCart();
 	public void resetShoppingCart();

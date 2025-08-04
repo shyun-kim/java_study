@@ -24,7 +24,7 @@ public class ProjectApplication {
 		System.out.print("당신의 이름을 입력하세요 : ");
 		member.setName(scan.next());
 		System.out.print("연락처를 입력하세요 : ");
-		member.setPhone(scan.nextInt());
+		member.setPhone(scan.next());
 		
 	}
 	public void showMenu() {
@@ -43,8 +43,9 @@ public class ProjectApplication {
 		int select;
 		System.out.print("메뉴 번호를 선택해 주세요> ");
 		select = scan.nextInt();
-		System.out.println(select+"번을 선택했습니다.");
+		System.out.println(select+"번을 선택했습니다. \n");
 		
+		service.showList();
 		switch(select) {
 			case CHECKCUSTOMER:
 				service.checkCustomer();
@@ -75,7 +76,7 @@ public class ProjectApplication {
 	}
 	
 	public ProjectApplication() {
-//		inputName();
+		inputName();
 		showMenu();
 		selectMenu();
 	}
