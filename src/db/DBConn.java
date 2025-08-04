@@ -10,7 +10,8 @@ public class DBConn {
 	//Field
 		private String url = "jdbc:mysql://127.0.0.1:3306/hrdb2019";
 		private String user = "root";
-		private String password = "mysql1234";
+		private String password = "Red50pajubass!";
+//		private String password = "mysql1234";
 		
 		Connection connection;
 		protected Statement stmt;

@@ -8,7 +8,7 @@ import chapter21_miniproject.service.ProjectService;
 public class ProjectApplication {
 	public static Scanner scan = new Scanner(System.in);
 	public static MemberVo member;
-	public ProjectService service = new ProjectService();
+	public ProjectService service = new ProjectService(scan, member);
 	
 	static final int CHECKCUSTOMER = 1;
 	static final int CHECKCART = 2;
@@ -50,24 +50,31 @@ public class ProjectApplication {
 		switch(select) {
 			case CHECKCUSTOMER:
 				service.checkCustomer();
+				showMenu();
 				break;
 			case CHECKCART:
 				service.checkShoppingCart();
+				showMenu();
 				break;
 			case RESETCART:
 				service.resetShoppingCart();
+				showMenu();
 				break;
 			case ADDITEM:
 				service.searchItemShoppingCart();
+				showMenu();
 				break;
 			case REDUCEITEM:
 				service.reduceItemShoppingCart();
+				showMenu();
 				break;
 			case DELETEITEM:
 				service.deleteItemShoppingCart();
+				showMenu();
 				break;
 			case RECEIPT:
 				service.showReceipt();
+				showMenu();
 				break;
 			case EXIT:
 				service.close();

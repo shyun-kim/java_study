@@ -1,25 +1,29 @@
 package chapter21_miniproject.service;
 
 import java.util.List;
+import java.util.Scanner;
 
-import chapter21_miniproject.application.ProjectApplication;
 import chapter21_miniproject.model.BookVo;
 import chapter21_miniproject.model.MemberVo;
 import chapter21_miniproject.repository.ProjectRepository;
 
 public class ProjectService implements ProjectServiceInterface{
+	private Scanner scan;
+	private MemberVo member;
 	ProjectRepository repository = new ProjectRepository();
-	ProjectApplication api;
-	public ProjectService() {}
-	public ProjectService(ProjectApplication api) {
-		this.api=api;
+	
+	
+	public ProjectService(Scanner scan, MemberVo member) {
+		this.scan = scan;
+		this.member = member;
 	}
 	
 	
+	/**/
+	
 	@Override
 	public void checkCustomer(){
-		
-		List<MemberVo> list = repository.customerInfo(api.member);
+		List<MemberVo> list = repository.customerInfo(member);
 		if (list != null) {
 				list.forEach(mlist -> {
 				System.out.print(mlist.getName()+"\t");
@@ -28,7 +32,6 @@ public class ProjectService implements ProjectServiceInterface{
 		} else {
 			System.out.println("등록된 고객 정보가 없습니다.");
 		}
-		api.showMenu();
 	}
 
 	@Override
@@ -65,30 +68,27 @@ public class ProjectService implements ProjectServiceInterface{
 		String bid;
 		showList();
 		System.out.print("장바구니에 추가할 도서의 ID를 입력하세요: ");
-		bid = api.scan.next();
+		bid = scan.next();
 		
 		addItemShoppingCart(bid);
 	}
 	
 	@Override
 	public void addItemShoppingCart(String bid) {
-		System.out.print("장바구니에 추가하시겠습니까? (Y/N)");
-		if(api.scan.hasNext()) {
-			if(api.scan.next() == "Y") {
+		System.out.print("장바구니에 추가하시겠습니까? (Y/N) ");
+		if(scan.hasNext()) {
+			if(scan.next().equals("Y")) {
 				repository.addItem(bid);
 				System.out.println(bid+"도서가 장바구니에 추가되었습니다.");
-				api.showMenu();
 			} else {
 				System.out.println("메인 메뉴로 돌아갑니다.");
-				api.showMenu();
 			}
 		} else {
 			System.out.println("잘못된 입력입니다.");
-			api.scan.nextInt();
+			scan.nextInt();
 			addItemShoppingCart(bid);
 		}
 		
-		System.out.println("4");
 	}
 	
 	@Override
