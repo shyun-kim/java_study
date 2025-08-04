@@ -4,7 +4,8 @@ import java.util.List;
 
 import chapter21_miniproject.model.MemberVo;
 
-public interface ProjectRepositoryInterface<A, B> {
+public interface ProjectRepositoryInterface<A,B> {
 	public List<A> showBookList();
 	public List<B> customerInfo();
+	public List<A> addItem(String bid);
 }

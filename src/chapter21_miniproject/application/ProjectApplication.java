@@ -6,9 +6,9 @@ import chapter21_miniproject.model.MemberVo;
 import chapter21_miniproject.service.ProjectService;
 
 public class ProjectApplication {
-	Scanner scan = new Scanner(System.in);
+	public Scanner scan;
+	public ProjectService service;
 	MemberVo member;
-	ProjectService service = new ProjectService();
 	
 	static final int CHECKCUSTOMER = 1;
 	static final int CHECKCART = 2;
@@ -45,7 +45,6 @@ public class ProjectApplication {
 		select = scan.nextInt();
 		System.out.println(select+"번을 선택했습니다. \n");
 		
-		service.showList();
 		switch(select) {
 			case CHECKCUSTOMER:
 				service.checkCustomer();
@@ -57,7 +56,7 @@ public class ProjectApplication {
 				service.resetShoppingCart();
 				break;
 			case ADDITEM:
-				service.addItemShoppingCart();
+				service.searchItemShoppingCart();
 				break;
 			case REDUCEITEM:
 				service.reduceItemShoppingCart();
@@ -76,6 +75,8 @@ public class ProjectApplication {
 	}
 	
 	public ProjectApplication() {
+		scan = new Scanner(System.in);
+		service = new ProjectService();
 		inputName();
 		showMenu();
 		selectMenu();

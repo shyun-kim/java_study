@@ -5,7 +5,8 @@ public interface ProjectServiceInterface {
 	public void checkCustomer();
 	public void checkShoppingCart();
 	public void resetShoppingCart();
-	public void addItemShoppingCart();
+	public void searchItemShoppingCart();
+	public void addItemShoppingCart(String bid);
 	public void reduceItemShoppingCart();
 	public void deleteItemShoppingCart();
 	public void showReceipt();

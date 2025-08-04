@@ -58,6 +58,12 @@ public class ProjectRepository extends DBConn implements ProjectRepositoryInterf
 		
 		return list;
 	}
-
+	
+	public List<BookVo> addItem(String bid) {
+		List<BookVo> list = new ArrayList<BookVo>();
+		
+		System.out.println("으앙");
+		return list;
+	}
 
 }
