@@ -16,6 +16,31 @@ public class ProjectService implements ProjectServiceInterface{
 	}
 	
 	
+	@Override
+	public void checkCustomer(){
+		
+		List<MemberVo> list = repository.customerInfo(api.member);
+		if (list != null) {
+				list.forEach(mlist -> {
+				System.out.print(mlist.getName()+"\t");
+				System.out.print(mlist.getPhone()+"\n");
+			});
+		} else {
+			System.out.println("등록된 고객 정보가 없습니다.");
+		}
+		api.showMenu();
+	}
+
+	@Override
+	public void checkShoppingCart() {
+		System.out.println("2");
+	}
+	
+	@Override
+	public void resetShoppingCart() {
+		System.out.println("3");
+	}
+	
 	public void showList() {
 		List<BookVo> list = repository.showBookList();
 		System.out.println("~~~~~");
@@ -33,31 +58,6 @@ public class ProjectService implements ProjectServiceInterface{
 			System.out.println("등록된 도서가 없습니다.");
 		}
 		System.out.println("~~~~~");
-	}
-	
-	
-	@Override
-	public void checkCustomer(){
-		List<MemberVo> list = repository.customerInfo();
-		if (list != null) {
-				list.forEach(mlist -> {
-				System.out.print(mlist.getName()+"\t");
-				System.out.print(mlist.getPhone()+"\n");
-			});
-		} else {
-			System.out.println("등록된 고객 정보가 없습니다.");
-		}
-		
-	}
-
-	@Override
-	public void checkShoppingCart() {
-		System.out.println("2");
-	}
-	
-	@Override
-	public void resetShoppingCart() {
-		System.out.println("3");
 	}
 	
 	@Override

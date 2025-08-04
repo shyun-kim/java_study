@@ -3,11 +3,43 @@ package chapter21_miniproject.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import chapter21_miniproject.application.ProjectApplication;
 import chapter21_miniproject.model.BookVo;
 import chapter21_miniproject.model.MemberVo;
 import db.DBConn;
 
 public class ProjectRepository extends DBConn implements ProjectRepositoryInterface<BookVo, MemberVo> {
+	ProjectApplication api;
+	public ProjectRepository() {}
+	public ProjectRepository(ProjectApplication api) {
+		this.api=api;
+	}
+	
+	public List<MemberVo> customerInfo(MemberVo member) {
+		List<MemberVo> list = new ArrayList<MemberVo>();
+		String sql = "select name, phone, address"
+				+" from book_market_member"
+				+" where name = '"+api.member.getName()+"' and phone = "+api.member.getPhone()+";";
+				
+		try {
+			getPreparedStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MemberVo mlist = new MemberVo();
+				mlist.setName(rs.getString(1));
+				mlist.setPhone(rs.getString(2));
+				mlist.setAddress(rs.getString(3));
+				
+				list.add(mlist);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
+	
+	
 	public List<BookVo> showBookList() {
 		List<BookVo> list = new ArrayList<BookVo>();
 		String sql = """
@@ -35,29 +67,7 @@ public class ProjectRepository extends DBConn implements ProjectRepositoryInterf
 		return list;
 	}
 	
-	public List<MemberVo> customerInfo() {
-		List<MemberVo> list = new ArrayList<MemberVo>();
-		String sql = """
-				select name, phone, address
-				from book_market_member;
-				""";
-		try {
-			getPreparedStatement(sql);
-			rs = pstmt.executeQuery();
-			while(rs.next()) {
-				MemberVo mlist = new MemberVo();
-				mlist.setName(rs.getString(1));
-				mlist.setPhone(rs.getString(2));
-				mlist.setAddress(rs.getString(3));
-				
-				list.add(mlist);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		return list;
-	}
+
 	
 	public List<BookVo> addItem(String bid) {
 		List<BookVo> list = new ArrayList<BookVo>();

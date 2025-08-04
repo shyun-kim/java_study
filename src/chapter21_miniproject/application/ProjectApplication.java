@@ -6,9 +6,9 @@ import chapter21_miniproject.model.MemberVo;
 import chapter21_miniproject.service.ProjectService;
 
 public class ProjectApplication {
-	public Scanner scan;
-	public ProjectService service;
-	MemberVo member;
+	public static Scanner scan = new Scanner(System.in);
+	public static MemberVo member;
+	public ProjectService service = new ProjectService();
 	
 	static final int CHECKCUSTOMER = 1;
 	static final int CHECKCART = 2;
@@ -27,6 +27,7 @@ public class ProjectApplication {
 		member.setPhone(scan.next());
 		
 	}
+	
 	public void showMenu() {
 		System.out.println("*********************************");
 		System.out.println("	Welcome to Shopping Mall");
@@ -37,6 +38,7 @@ public class ProjectApplication {
 		System.out.println("5. 장바구니의 항목 수량 줄이기\t6. 장바구니의 항목 삭제하기");
 		System.out.println("7. 영수증 표시하기\t\t8. 종료");
 		System.out.println("*********************************");
+		selectMenu();
 	}
 	
 	public void selectMenu() {
@@ -75,11 +77,9 @@ public class ProjectApplication {
 	}
 	
 	public ProjectApplication() {
-		scan = new Scanner(System.in);
-		service = new ProjectService();
 		inputName();
 		showMenu();
-		selectMenu();
+		
 	}
 	
 	public static void main(String[] args) {
